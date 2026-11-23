@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>Shadowing Studio</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d30;--panel2:#17243a;--line:#293952;--text:#eef4ff;--muted:#9aabc3;--accent:#8bd3c7;--accent2:#b6a6ff;--danger:#ff8e9b;--gold:#f4cb7a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#182944 0,#0b1220 55%);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+.wrap{max-width:900px;margin:auto;padding:24px 16px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#101827;font-weight:900;font-size:21px}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:2px;font-weight:800}.hero h1{font-size:clamp(27px,5vw,40px);line-height:1.12;margin:7px 0}.hero p{color:var(--muted);max-width:650px;margin:8px 0 20px}.pill{border:1px solid var(--line);color:var(--accent);padding:6px 10px;border-radius:99px;font-size:12px;white-space:nowrap}
+.card{background:rgba(18,29,48,.94);border:1px solid var(--line);border-radius:18px;padding:19px;margin:14px 0;box-shadow:0 10px 35px #0002}.card h2{font-size:18px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 15px}.step{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:8px;background:#20334c;color:var(--accent);font-weight:800;font-size:12px;margin-right:8px}
+label{display:block;color:#d7e3f5;font-size:13px;font-weight:700;margin:13px 0 6px}input,textarea,select{width:100%;background:#0c1627;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:12px;font:inherit;outline:none}textarea{min-height:155px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--accent)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}button{border:0;border-radius:11px;padding:11px 15px;font:700 13px system-ui;cursor:pointer;background:var(--accent);color:#10202a}button.secondary{background:#22334b;color:var(--text);border:1px solid var(--line)}button.purple{background:var(--accent2);color:#17142b}button.red{background:#4a2632;color:#ffdce1;border:1px solid #70404c}button:disabled{opacity:.45;cursor:not-allowed}.status{color:var(--muted);font-size:13px;margin-top:10px;min-height:20px}.timer{font-size:30px;font-variant-numeric:tabular-nums;font-weight:800;letter-spacing:1px;margin:8px 0}.record-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--danger);margin-right:7px}.hint{background:#102b31;border:1px solid #27514f;color:#c7eee6;padding:12px;border-radius:12px;font-size:13px;margin-top:12px}.grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px}.result{background:#0d1829;border:1px solid var(--line);border-radius:13px;padding:14px;min-height:120px}.result h3{font-size:14px;margin:0 0 7px}.result p{font-size:12px;color:var(--muted);margin:0 0 9px}.result textarea{min-height:115px;font-size:13px}.num{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:1px}.small{font-size:12px;color:var(--muted)}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px}
+@media(max-width:600px){.wrap{padding:18px 12px 45px}.row,.grid4{grid-template-columns:1fr}.card{padding:15px}.top{align-items:flex-start}.pill{font-size:10px}}
+</style>
+
+<meta name="description" content="Practice English pronunciation with shadowing, voice recording, and a structured learning notebook.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">S</div><div><div class="eyebrow">PERSONAL ENGLISH TRAINER</div><strong>SHADOWING STUDIO</strong></div></div>
+    <span class="pill">American English · v1.0</span>
+  </div>
+  <header class="hero">
+    <div class="eyebrow">LISTEN · SHADOW · RECORD · IMPROVE</div>
+    <h1>Make every lesson count.</h1>
+    <p>Paste a dialogue, record your shadowing, and prepare a focused pronunciation review with exactly four notebook sections.</p>
+  </header>
+
+  <section class="card">
+    <h2><span class="step">01</span>Lesson setup</h2>
+    <p class="sub">Paste the source transcript you are practicing.</p>
+    <label for="lessonTitle">Lesson title / source</label>
+    <input id="lessonTitle" placeholder="e.g. Friends — New Year Scene" value="Friends — New Year Scene">
+    <div class="row">
+      <div><label for="accent">Target accent</label><select id="accent"><option>American English</option><option>British English</option></select></div>
+      <div><label for="style">Speaking style</label><select id="style"><option>Natural conversational speech</option><option>Slow and clear speech</option><option>Fast casual conversational speech</option></select></div>
+    </div>
+    <label for="transcript">Original dialogue / transcript</label>
+    <textarea id="transcript" placeholder="Paste your lesson text here..."></textarea>
+    <div class="actions"><button class="secondary" id="loadExample">Load Friends example</button><button class="secondary" id="clearText">Clear text</button></div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">02</span>Record your shadowing</h2>
+    <p class="sub">Allow microphone access, then speak the selected sentences. Use headphones if you are playing the original audio.</p>
+    <div class="timer" id="timer">00:00</div>
+    <div class="actions">
+      <button id="startBtn">● Start recording</button>
+      <button id="stopBtn" class="red" disabled>■ Stop</button>
+      <button id="playBtn" class="secondary" disabled>▶ Play recording</button>
+      <button id="downloadBtn" class="secondary" disabled>↓ Download audio</button>
+    </div>
+    <audio id="audioPlayback" controls style="width:100%;margin-top:13px;display:none"></audio>
+    <div class="status" id="recordStatus">No recording yet.</div>
+    <div class="hint">Your audio stays in this browser until you choose to download or upload it. This page does not send recordings to a server.</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">03</span>Generate your coach prompt</h2>
+    <p class="sub">Copy this prompt, then attach your downloaded recording in ChatGPT to receive the analysis.</p>
+    <div class="actions"><button id="copyPrompt">Copy complete analysis prompt</button><button class="secondary" id="showPrompt">Show / hide prompt</button></div>
+    <textarea id="promptBox" style="display:none;min-height:260px;margin-top:12px"></textarea>
+    <div class="hint">For an accurate Personal Mistakes section, attach your actual recording with the prompt. The prompt alone cannot assess your voice.</div>
+  </section>
+
+  <section class="card">
+    <h2><span class="step">04</span>Your four notebook sections</h2>
+    <p class="sub">Paste the coach's returned analysis into the matching section. You can edit these notes and print the page.</p>
+    <div class="grid4">
+      <div class="result"><div class="num">SECTION 1</div><h3>Three Rules</h3><p>Linking · reductions · stress · rhythm · intonation</p><textarea id="rules" placeholder="Rule 1 + example + how to practice&#10;Rule 2...&#10;Rule 3..."></textarea></div>
+      <div class="result"><div class="num">SECTION 2</div><h3>Three Different Words</h3><p>IPA · pronunciation · meaning · common trap</p><textarea id="words" placeholder="Word 1 — IPA — meaning&#10;Word 2...&#10;Word 3..."></textarea></div>
+      <div class="result"><div class="num">SECTION 3</div><h3>Sentences for Shadowing</h3><p>Stress-marked · chunked · imitation target</p><textarea id="sentences" placeholder="Sentence 1&#10;Sentence 2&#10;Sentence 3"></textarea></div>
+      <div class="result"><div class="num">SECTION 4</div><h3>Personal Mistakes</h3><p>What happened · correction · repeat drill</p><textarea id="mistakes" placeholder="Mistake 1 + correction&#10;Mistake 2...&#10;Mistake 3..."></textarea></div>
+    </div>
+    <label for="reflection">My reflection / next lesson target</label>
+    <textarea id="reflection" style="min-height:85px" placeholder="My biggest improvement today...&#10;What I will practice tomorrow..."></textarea>
+    <div class="actions"><button id="printNotes" class="purple">Print notebook page</button><button id="downloadNotes" class="secondary">Download notes (.txt)</button><button id="clearNotes" class="secondary">Clear notes</button></div>
+  </section>
+  <div class="footer">Shadowing Studio · Practice consistently, not perfectly.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const example=`"In twenty seconds, it'll be midnight."
+"And the moment of joy is upon us."
+"Looks like that no date pact thing worked out."
+"Happy New Year!"
+"You know, I, uh, just thought I'd throw this out here, I'm no math whiz but I do believe there are three girls and three guys right here."
+"Oh, I don't feel like kissing anyone tonight."
+"I can't kiss anyone."
+"So I'm kissing everyone?"
+"No. No. No. You can't kiss Ross, that's your brother."
+"Oh perfect, perfect. So now everybody's getting kissed but me?"
+"Alright, somebody kiss me. Somebody kiss me, it's midnight! Somebody kiss me! It's midnight!"`;
+$('loadExample').onclick=()=>{$('transcript').value=example;updatePrompt()};
+$('clearText').onclick=()=>{$('transcript').value='';updatePrompt()};
+const fields=['lessonTitle','accent','style','transcript'];
+fields.forEach(id=>$(id).addEventListener('input',updatePrompt));
+function buildPrompt(){return `Act as my personal ${$('accent').value} Shadowing Coach.
+
+LESSON: ${$('lessonTitle').value}
+SPEAKING STYLE: ${$('style').value}
+
+ORIGINAL TEXT:
+${$('transcript').value}
+
+I have attached my voice recording. Compare my actual speech with this text. Analyze only what can be heard. If the audio is missing or unclear, say so instead of guessing.
+
+Return EXACTLY these four sections, in this order:
+
+1. THREE RULES
+Choose the 3 most useful pronunciation rules demonstrated in this lesson. For each give: rule name, exact example, how the speaker says it, and how I should practice it. Consider linking, reductions, stress, rhythm, intonation, and sound changes. Do not force a rule that is not present.
+
+2. THREE DIFFERENT WORDS
+Choose 3 useful or difficult words from the lesson. For each give: word, IPA, simple ${$('accent').value} pronunciation guide, meaning in context, and one common pronunciation trap.
+
+3. SENTENCES FOR SHADOWING
+Select the 3 best complete sentences from the lesson. For each give: original sentence, stress-marked version using CAPITALS for stressed words, chunking with / marks, and one imitation target (speed, linking, rhythm, or intonation). Preserve the original wording.
+
+4. PERSONAL MISTAKES
+Compare my recording with the original. Identify my 3 most important audible mistakes, if any. For each give: what I said/did, what to change, the target model, and a short repeat drill. Separate pronunciation errors from acceptable accent differences. Never invent mistakes.
+
+Finish with a compact NOTEBOOK SUMMARY using the same four headings. Use learner-friendly English with brief Arabic explanations where helpful.`}
+function updatePrompt(){$('promptBox').value=buildPrompt()}
+updatePrompt();
+$('showPrompt').onclick=()=>{$('promptBox').style.display=$('promptBox').style.display==='none'?'block':'none'};
+$('copyPrompt').onclick=async()=>{updatePrompt();try{await navigator.clipboard.writeText($('promptBox').value);$('recordStatus').textContent='Analysis prompt copied.'}catch(e){$('promptBox').style.display='block';$('promptBox').select();$('recordStatus').textContent='Select and copy the prompt manually.'}};
+let recorder,stream,chunks=[],blob=null,startAt=0,tick=null,url=null;
+function timeFmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+$('startBtn').onclick=async()=>{
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  chunks=[];blob=null;
+  const mime=['audio/webm;codecs=opus','audio/webm','audio/mp4'].find(t=>MediaRecorder.isTypeSupported(t));
+  recorder=new MediaRecorder(stream,mime?{mimeType:mime}:{});
+  recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};
+  recorder.onstop=()=>{blob=new Blob(chunks,{type:recorder.mimeType||'audio/webm'});if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(blob);$('audioPlayback').src=url;$('audioPlayback').style.display='block';$('playBtn').disabled=false;$('downloadBtn').disabled=false;$('recordStatus').textContent='Recording ready. Download it and attach it in ChatGPT with the prompt.';stream.getTracks().forEach(t=>t.stop())};
+  recorder.start();startAt=Date.now();$('startBtn').disabled=true;$('stopBtn').disabled=false;$('recordStatus').innerHTML='<span class="record-dot"></span>Recording...';tick=setInterval(()=>$('timer').textContent=timeFmt(Math.floor((Date.now()-startAt)/1000)),250);
+ }catch(e){$('recordStatus').textContent='Microphone access failed. Open this page in a browser that supports microphone recording and allow microphone permission.'}
+};
+$('stopBtn').onclick=()=>{if(recorder&&recorder.state!=='inactive'){recorder.stop();clearInterval(tick);$('startBtn').disabled=false;$('stopBtn').disabled=true;$('timer').textContent=timeFmt(Math.floor((Date.now()-startAt)/1000))}};
+$('playBtn').onclick=()=>{$('audioPlayback').play()};
+$('downloadBtn').onclick=()=>{if(!blob)return;const a=document.createElement('a');a.href=url;a.download='shadowing-recording.'+(blob.type.includes('mp4')?'mp4':'webm');a.click()};
+const noteIds=['rules','words','sentences','mistakes','reflection'];
+$('clearNotes').onclick=()=>{if(confirm('Clear all notebook notes?'))noteIds.forEach(id=>$(id).value='')};
+function notesText(){return `SHADOWING STUDIO — ${$('lessonTitle').value}\nTarget: ${$('accent').value}\n\nTHREE RULES\n${$('rules').value}\n\nTHREE DIFFERENT WORDS\n${$('words').value}\n\nSENTENCES FOR SHADOWING\n${$('sentences').value}\n\nPERSONAL MISTAKES\n${$('mistakes').value}\n\nREFLECTION\n${$('reflection').value}\n`}
+$('downloadNotes').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([notesText()],{type:'text/plain;charset=utf-8'}));a.download='shadowing-notes.txt';a.click()};
+$('printNotes').onclick=()=>{const w=window.open('','_blank');if(!w){alert('Allow pop-ups to print your notebook page.');return}w.document.write(`<html><head><title>Shadowing Notes</title><style>body{font:15px/1.6 Arial;padding:30px;color:#111}h1{font-size:23px}h2{font-size:16px;border-bottom:1px solid #aaa;padding-bottom:5px}pre{white-space:pre-wrap;font:14px/1.6 Arial}</style>
+<meta name="description" content="Practice English pronunciation with shadowing, voice recording, and a structured learning notebook.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head><body><h1>${$('lessonTitle').value.replace(/[<>&"]/g,'')}</h1><pre>${notesText().replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</pre>
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Offline support could not be enabled:", err));
+  });
+}
+</script>
+</body></html>`);w.document.close();w.print()};
+</script>
+
+<script>
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => console.warn("Offline support could not be enabled:", err));
+  });
+}
+</script>
+</body>
+</html>
